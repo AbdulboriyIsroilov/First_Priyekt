@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_8/home_page_nav.dart';
-import 'package:flutter_8/navigator_live.dart';
+import 'package:flutter_8/expord_page.dart';
 import 'package:flutter_8/navigator_revard.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-class ExpordPage extends StatefulWidget {
-  ExpordPage({
+import 'expord_page_all.dart';
+import 'expord_page_time.dart';
+import 'my_home_page.dart';
+
+class NavigatorLive extends StatefulWidget {
+  NavigatorLive({
     super.key,
   });
 
   @override
-  State<ExpordPage> createState() => _ExpordPageState();
+  State<NavigatorLive> createState() => _NavigatorLiveState();
 }
 
-class _ExpordPageState extends State<ExpordPage> {
-  int navigator = 0;
+class _NavigatorLiveState extends State<NavigatorLive> {
+  int navigator = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -42,54 +45,19 @@ class _ExpordPageState extends State<ExpordPage> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Live Scores",
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-                Text(
-                  "See All",
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
-                ),
-              ],
-            ),
-            SizedBox(height: 15.5),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                spacing: 8,
-                children: [
-                  HomePageNav(
-                    title1: "assets/imageh5.png",
-                    title2: "assets/imageh4.png",
-                    title3: "Leeds United",
-                    title4: "Liverpool",
-                    title5: "0",
-                    title6: "83 mins",
-                    title7: "2",
-                    firsts: true,
-                  ),
-                  HomePageNav(
-                    title1: "assets/imageh3.png",
-                    title2: "assets/imageh2.png",
-                    title3: "Espanyol",
-                    title4: "Atl. Madrid",
-                    title5: "1",
-                    title6: "72 mins",
-                    title7: "0",
-                  ),
-                ],
-              ),
-            ),
-          ],
+        padding: EdgeInsets.only(left: 16.0, top: 9, right: 16),
+        child: SingleChildScrollView(
+          child: Column(
+            spacing: 18,
+            children: [
+              MyHome(),
+              ExpordPageApp(),
+              ExpordPageTime(),
+            ],
+          ),
         ),
       ),
-      bottomNavigationBar: NavigationBar  (
+      bottomNavigationBar: NavigationBar(
         selectedIndex: navigator,
         indicatorColor: Colors.transparent,
         labelTextStyle: WidgetStatePropertyAll(
@@ -97,16 +65,16 @@ class _ExpordPageState extends State<ExpordPage> {
         ),
         onDestinationSelected: (index) {
           navigator = index;
-          index == 2
+          index == 3
               ? Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => NavigatorLive()),
+                  MaterialPageRoute(builder: (context) => NavigatorRevard()),
                 )
               : Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => NavigatorRevard()),
+                  MaterialPageRoute(builder: (context) => ExpordPage()),
                 );
           setState(() {});
         },
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xFF2E2E2E),
         destinations: [
           NavigationDestination(
             icon: SvgPicture.asset(
@@ -160,13 +128,6 @@ class _ExpordPageState extends State<ExpordPage> {
           ),
         ],
       ),
-      // floatingActionButton: FloatingActionButton(onPressed: (){
-      //   Navigator.of(context).push(
-      //     MaterialPageRoute(
-      //       builder: (context) => HomeNew(),
-      //     ),
-      //   );
-      // }),
     );
   }
 }

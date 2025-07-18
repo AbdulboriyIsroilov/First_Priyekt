@@ -10,12 +10,13 @@ class ExpordPageApp extends StatefulWidget {
 class _ExpordPageAppState extends State<ExpordPageApp> {
   List<String> list1 = [
     "assets/image1.png",
-    "assets/image2.png",
+    "assets/imageh1.png",
     "assets/image3.png",
     "assets/image4.png",
   ];
   int activ = 0;
   bool all = false;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -37,7 +38,7 @@ class _ExpordPageAppState extends State<ExpordPageApp> {
               ),
             ),
             onPressed: () {
-              all=true;
+              all = !all;
               setState(() {});
             },
             child: Text(
@@ -49,7 +50,7 @@ class _ExpordPageAppState extends State<ExpordPageApp> {
               ),
             ),
           ),
-          ...List.generate(list1.length, (index){
+          ...List.generate(list1.length, (index) {
             return TextButton(
               style: TextButton.styleFrom(
                 padding: EdgeInsets.only(
@@ -58,13 +59,15 @@ class _ExpordPageAppState extends State<ExpordPageApp> {
                   right: 11,
                   bottom: 13,
                 ),
-                backgroundColor: Color(activ==index ? 0xFF3F3F3F : 0xFF2A2A2A),
+                backgroundColor: Color(
+                  activ == index ? 0xFF3F3F3F : 0xFF2A2A2A,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(28),
                 ),
               ),
               onPressed: () {
-                activ=index;
+                activ = index;
                 setState(() {});
               },
               child: Image.asset(
@@ -74,10 +77,9 @@ class _ExpordPageAppState extends State<ExpordPageApp> {
                 fit: BoxFit.cover,
               ),
             );
-          })
+          }),
         ],
       ),
     );
   }
 }
-

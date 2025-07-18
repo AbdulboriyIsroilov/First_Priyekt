@@ -13,9 +13,10 @@ class _MyHomeState extends State<MyHome> {
     "Mon, 13 Sep",
     "Tue, 14 Sep",
     "We, 15 Sep",
-    "Standings"
+    "Standings",
   ];
   int axcist = 0;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -26,22 +27,33 @@ class _MyHomeState extends State<MyHome> {
           ...List.generate(list.length, (index) {
             return OutlinedButton(
               style: OutlinedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 6,horizontal: 10.5),
-                  backgroundColor: Color(axcist == index ? 0xFFFFFFFF : 0xFF282828),
-                  foregroundColor: Color(axcist == index ? 0xFF2D2D2D : 0xFF8D8D8D),
-                  side: BorderSide(color: Color(axcist == index? 0xFFFFFFFF : 0xFF373737)),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
-                  )
+                padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10.5),
+                backgroundColor: Color(
+                  axcist == index ? 0xFFFFFFFF : 0xFF282828,
+                ),
+                foregroundColor: Color(
+                  axcist == index ? 0xFF2D2D2D : 0xFF8D8D8D,
+                ),
+                side: BorderSide(
+                  color: Color(axcist == index ? 0xFFFFFFFF : 0xFF373737),
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6),
+                ),
               ),
               onPressed: () {
-                axcist=index;
+                axcist = index;
                 setState(() {});
               },
-              child: Text(list[index],
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500,),),
+              child: Text(
+                list[index],
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             );
-          })
+          }),
         ],
       ),
     );

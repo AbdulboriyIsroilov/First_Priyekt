@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_8/navigator_revard.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RewerdTickt extends StatelessWidget {
@@ -12,7 +13,12 @@ class RewerdTickt extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                  builder: (context) => NavigatorRevard())
+            );
+          },
           icon: Icon(
             Icons.arrow_back_ios,
             color: Color(0xFFD3D3D3),
